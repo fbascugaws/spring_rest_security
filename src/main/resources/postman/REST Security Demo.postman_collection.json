@@ -1,0 +1,101 @@
+{
+  "info": {
+    "_postman_id": "38e2ba24-667d-442c-ae62-81b282ed8be2",
+    "name": "REST Security Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58837986",
+    "_collection_link": "https://go.postman.co/collection/58837986-38e2ba24-667d-442c-ae62-81b282ed8be2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "security_create_role",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"USER\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/register_authorized_role",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "register_authorized_role"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "security_create_user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"user_1\",\r\n    \"password\": \"password_1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/register_authorized_user",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "register_authorized_user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "auth_login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"user_1\",\r\n    \"password\": \"password_1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/auth_login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "auth_login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
