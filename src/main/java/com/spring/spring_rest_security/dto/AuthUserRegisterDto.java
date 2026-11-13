@@ -2,7 +2,9 @@ package com.spring.spring_rest_security.dto;
 
 /**
  * AuthUserRegisterDto
+ * Data Transfer Object (DTO) for capturing new authorization role details.
  * 
+ * @author Felisa Bascug
  */
 public class AuthUserRegisterDto {
 

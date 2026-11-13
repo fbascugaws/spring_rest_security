@@ -15,6 +15,14 @@ import jakarta.persistence.Table;
 
 /**
  * Auth_User
+ * <p>
+ * JPA entity representing an authenticated user in the system.
+ * Maps to the {@code auth_user} database table and maintains a many-to-many
+ * relationship with {@link Auth_Role} entities via the 
+ * {@code authusers_authroles} join table.
+ * </p>
+ * 
+ * @author Felisa Bascug
  */
 @Entity 
 @Table (name = "auth_user")

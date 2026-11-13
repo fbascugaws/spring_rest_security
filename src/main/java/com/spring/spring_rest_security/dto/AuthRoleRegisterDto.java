@@ -2,7 +2,9 @@ package com.spring.spring_rest_security.dto;
 
 /**
  * AuthRoleRegisterDto
+ * Data Transfer Object (DTO) for capturing user registration credentials.
  * 
+ * @author Felisa Bascug
  */
 public class AuthRoleRegisterDto {
 

@@ -22,6 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * AuthenticationController
+ * <p>
+ * REST controller responsible for handling authentication and authorization 
+ * endpoints, including role registration, user registration, and user login.
+ * </p>
+ * 
+ * @author Felisa Bascug
  */
 @RestController 
 @RequestMapping ("/api/auth")
@@ -43,9 +49,14 @@ public class AuthenticationController {
     }
 
     /**
-     * 
-     * @param authRoleRegisterDto
-     * @return
+     * Registers a new authorization role in the system if it does not already
+     * exist.
+     *
+     * @param authRoleRegisterDto the data transfer object containing the name
+     *                              of the role to create
+     * @return a {@link ResponseEntity} containing a confirmation message with
+     *          HTTP status {@code 200 OK} if created, or an error message with
+     *           HTTP status {@code 400 BAD_REQUEST} if the role already exists
      */
     @PostMapping ("/register_authorized_role")
     public ResponseEntity<String> register_authRole(
@@ -68,9 +79,17 @@ public class AuthenticationController {
     }
 
     /**
-     * 
-     * @param authUserRegisterDto
-     * @return
+     * Registers a new user account with an encoded password and assigns the 
+     * default {@code USER} role.
+     *
+     * @param authUserRegisterDto the data transfer object containing the new
+     *                               user's username and raw password
+     * @return a {@link ResponseEntity} containing a success message with HTTP
+     *          status {@code 200 OK} if registered, or an error message with 
+     *          HTTP status {@code 400 BAD_REQUEST} if the username is already
+     *          taken
+     * @throws RuntimeException if the default {@code USER} role cannot be 
+     *          found in the database
      */
     @PostMapping("/register_authorized_user")
     public ResponseEntity<String> register_authUser (
@@ -98,9 +117,13 @@ public class AuthenticationController {
     }
     
     /**
-     * 
-     * @param authLoginDto
-     * @return
+     * Authenticates a user using their username and password and stores the 
+     * authentication details in the {@link SecurityContextHolder}.
+     *
+     * @param authLoginDto the data transfer object containing the user's login
+     *                      credentials
+     * @return a {@link ResponseEntity} confirming successful sign-in with HTTP
+     *          status {@code 200 OK}
      */
     @PostMapping ("/auth_login")
     public ResponseEntity<String> login(

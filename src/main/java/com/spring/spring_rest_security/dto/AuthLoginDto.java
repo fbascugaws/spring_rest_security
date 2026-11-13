@@ -1,8 +1,10 @@
 package com.spring.spring_rest_security.dto;
 
 /**
- * 
  * AuthLoginDto
+ * Data Transfer Object (DTO) for capturing user login credentials.
+ * 
+ * @author Felisa Bascug
  */
 public class AuthLoginDto {
 

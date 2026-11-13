@@ -8,6 +8,12 @@ import jakarta.persistence.Table;
 
 /**
  * Auth_Role
+ * <p>
+ * JPA entity representing an authorization role or authority in the system.
+ * Maps to the {@code auth_role} database table.
+ * </p>
+ * 
+ * @author Felisa Bascug
  */
 @Entity 
 @Table (name = "auth_role")

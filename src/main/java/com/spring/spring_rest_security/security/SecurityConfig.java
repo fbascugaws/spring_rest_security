@@ -17,7 +17,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 /**
  * SecurityConfig
+ * <p>
+ * Spring Security configuration class defining HTTP endpoint access rules,
+ * password encoding mechanisms, and authentication management beans.
+ * </p>
  * 
+ * @author Felisa Bascug
  */
 @EnableWebSecurity 
 @Configuration 
@@ -39,10 +44,16 @@ public class SecurityConfig {
     }    
 
     /**
-     * 
-     * @param security
-     * @return
-     * @throws Exception
+     * Configures the security filter chain for incoming HTTP requests.
+     * Disables CSRF protection, permits unauthenticated access to 
+     * {@code /api/auth/**} endpoints, requires authentication for all other 
+     * requests, and enables HTTP Basic authentication.
+     *
+     * @param security the {@link HttpSecurity} builder used to configure 
+     *          web-based security
+     * @return the configured {@link SecurityFilterChain}
+     * @throws Exception if an error occurs while building the security filter
+     *          chain
      */
     @Bean 
     SecurityFilterChain filterChain(HttpSecurity security) throws Exception {
@@ -57,11 +68,27 @@ public class SecurityConfig {
 
     }
 
+    /**
+     * Provides a {@link BCryptPasswordEncoder} bean for hashing and verifying 
+     * user passwords.
+     *
+     * @return a new {@link BCryptPasswordEncoder} instance
+     */
     @Bean 
     BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Exposes the Spring Security {@link AuthenticationManager} bean from the
+     * provided authentication configuration.
+     *
+     * @param authentication the {@link AuthenticationConfiguration} containing
+     *      the authentication manager
+     * @return the configured {@link AuthenticationManager}
+     * @throws Exception if an error occurs while retrieving the authentication
+     *          manager
+     */
     @Bean 
     AuthenticationManager authenticationManager(
             AuthenticationConfiguration authentication) throws Exception {
