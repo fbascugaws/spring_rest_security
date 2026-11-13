@@ -1,5 +1,6 @@
 package com.spring.spring_rest_security.controller;
 
+import com.spring.spring_rest_security.dto.AuthLoginDto;
 import com.spring.spring_rest_security.dto.AuthRoleRegisterDto;
 import com.spring.spring_rest_security.dto.AuthUserRegisterDto;
 import com.spring.spring_rest_security.entity.Auth_Role;
@@ -10,6 +11,9 @@ import java.util.Collections;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -93,5 +97,22 @@ public class AuthenticationController {
             HttpStatus.OK);
     }
     
+    /**
+     * 
+     * @param authLoginDto
+     * @return
+     */
+    @PostMapping ("/auth_login")
+    public ResponseEntity<String> login(
+            @RequestBody AuthLoginDto authLoginDto) {
+
+        Authentication authenticate = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                authLoginDto.getUsername(), authLoginDto.getPassword()));
+
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
+
+        return new ResponseEntity<>("Signed in successfully!", HttpStatus.OK);
+    }
 
 }
