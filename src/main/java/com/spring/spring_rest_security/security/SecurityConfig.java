@@ -1,5 +1,6 @@
 package com.spring.spring_rest_security.security;
 
+import com.spring.spring_rest_security.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

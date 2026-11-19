@@ -1,4 +1,4 @@
-package com.spring.spring_rest_security.security;
+package com.spring.spring_rest_security.service;
 
 import com.spring.spring_rest_security.entity.Auth_Role;
 import com.spring.spring_rest_security.entity.Auth_User;
